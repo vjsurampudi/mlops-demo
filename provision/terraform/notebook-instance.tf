@@ -40,6 +40,7 @@ resource "google_notebooks_instance" "notebook_instance" {
     name             = "${var.name_prefix}-notebook"
     machine_type     = var.machine_type
     location         = var.zone
+    service_account  = "${google_service_account.pipelines_sa.email}"
 
     network = data.google_compute_network.vm_network.id
     subnet  = data.google_compute_subnetwork.vm_subnetwork.id
